@@ -1,6 +1,8 @@
 const { Client, Intents } = require('discord.js');
 
-const { clientId, guildId, token } = require('./config.json');
+const clientId = process.env.CLIENT_ID;
+const guildId  = process.env.GUILD_ID;
+const token = process.env.TOKEN;
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -13,7 +15,7 @@ client.on('interactionCreate', async interaction => {
 
 	const { commandName } = interaction;
 
-	if (commandName === 'ping') {
+	if (commandName === 'req') {
 		await interaction.reply('Pong!');
 	}
 });
