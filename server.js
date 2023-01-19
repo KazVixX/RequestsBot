@@ -6,10 +6,10 @@ const { ActivityType } = require('discord-api-types/v10');
 const guildId  = process.env.GUILD_ID;
 const token = process.env.TOKEN;
 
-const modsChannelID = '1065581489577795646';
-const reviewsChannelID = '1065581621543186442';
-const successesChannelID = '1065581252960337921';
-const discardsChannelID = '1065581416471072801';
+const modsChannelID = '1065623745307357204';
+const reviewsChannelID = '1065681370422186045';
+const successesChannelID = '1061617543565025320';
+const discardsChannelID = '1061617605451972740';
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const gd = new GD();
