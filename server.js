@@ -174,7 +174,7 @@ client.on('interactionCreate', async interaction => {
 		.setCustomId('reviewInput')
 		.setLabel("Review")
         .setMinLength(5)
-        .setMaxLength(400)
+        .setMaxLength(2000)
         .setPlaceholder(revPlaceholder)
         .setRequired(true)
 		.setStyle('PARAGRAPH');
@@ -208,7 +208,7 @@ client.on('interactionCreate', async interaction => {
 		.setCustomId('reviewInput')
 		.setLabel("Review")
         .setMinLength(5)
-        .setMaxLength(400)
+        .setMaxLength(2000)
         .setPlaceholder(revPlaceholder)
         .setRequired(true)
 		.setStyle('PARAGRAPH');
@@ -219,9 +219,9 @@ client.on('interactionCreate', async interaction => {
 		.setCustomId('reasonInput')
 		.setLabel("Reason")
         .setMinLength(5)
-        .setMaxLength(400)
+        .setMaxLength(100)
         .setPlaceholder('Why did you decide to decline this request?')
-        .setRequired(true)
+        .setRequired(false)
 		.setStyle('PARAGRAPH');
 
 	const reasonRow = new MessageActionRow().addComponents(reasonInput);
@@ -342,8 +342,14 @@ client.on('interactionCreate', async interaction => {
     reviewMsgText += review;
 
     var discardMsgText = '';
-    discardMsgText += mention + ', your level request (ID: ' + levelID + ') was discarded with the following reason:' + '\n';
-    discardMsgText += reason;
+    if (reason)
+    {
+        discardMsgText += mention + ', your level request (ID: ' + levelID + ') was discarded with the following reason:' + '\n';
+        discardMsgText += reason;
+    }
+    else
+        discardMsgText += mention + ', your level request (ID: ' + levelID + ') was discarded. Check the review in the corresponding channel for the possible reasons' + '\n';
+    
 
     const fetchedMsg = await modsChannel.messages.fetch({ 
         around: msgID, 
