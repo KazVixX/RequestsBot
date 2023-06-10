@@ -107,7 +107,8 @@ client.on('interactionCreate', async interaction => {
             msgText += 'Difficulty: ' + diffStr + '\n'
             msgText += 'YT Link: ' + ytLink + '\n'
             msgText += 'Review: ' + reviewStr + '\n'
-            msgText += '\n'
+            msgText += 'Requested by: ' + mention + '\n'
+	    msgText += '\n'
             if (additionalInfo)
                 msgText += additionalInfo + '\n'
 
